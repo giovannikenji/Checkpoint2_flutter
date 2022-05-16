@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:giovanni_sir/pages/components/giovanni_button.dart';
 import 'package:giovanni_sir/pages/components/giovanni_card.dart';
 import 'package:giovanni_sir/pages/components/giovanni_form.dart';
+import 'package:giovanni_sir/pages/components/giovanni_list_display.dart';
 import 'package:giovanni_sir/pages/model/games_model.dart';
 
 class ListPage extends StatefulWidget {
@@ -71,18 +72,7 @@ class _ListPage extends State<ListPage> {
                 textedInput: genreInputController,
               ),
               const SizedBox(height: 40),
-              ListView.separated(
-                shrinkWrap: true,
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(height: 20);
-                },
-                itemCount: gamesList.length,
-                itemBuilder: (context, index) {
-                  return GiovanniCard(
-                      gameName: gamesList[index].gameTitle.toString(),
-                      gameGenre: gamesList[index].gameGenre.toString());
-                },
-              ),
+              GiovanniListDisplay(gamesList: gamesList),
               const SizedBox(height: 40),
             ],
           ),
